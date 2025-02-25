@@ -1,41 +1,62 @@
-<script setup lang="ts">
-defineProps<{
-  msg: string
-}>()
-</script>
-
 <template>
-  <div class="greetings">
-    <h1 class="green">{{ msg }}</h1>
-    <h3>
-      You’ve successfully created a project with
-      <a href="https://vite.dev/" target="_blank" rel="noopener">Vite</a> +
-      <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue 3</a>.
-    </h3>
+  <div class="person">
+    <h2>当前求和： {{ sum }}</h2>
+    <button @click="changeSum">点击+1</button>
+    <hr>
+    <img v-for="dog in dogList" :key="dog.id" :src="dog.img"/>
   </div>
 </template>
 
-<style scoped>
-h1 {
-  font-weight: 500;
-  font-size: 2.6rem;
-  position: relative;
-  top: -10px;
-}
+<script lang="ts" setup name="Person">
+  import {onMounted, reactive, ref} from 'vue'
+  import axios from 'axios'
+  import useSum from '@/hooks/useSum'
+  
+  let {sum, changeSum} = useSum()
+  
+  let dogList = reactive([
+    {
+      id: 'figf01',
+      name: 'dog1',
+      img: '',
+    },
+    {
+      id: 'figf02',
+      name: 'dog2',
+      img: '',
+    }
+  ])
 
-h3 {
-  font-size: 1.2rem;
-}
+  // async function getDogImg () {
+  //   let data = await axios.get('https://dog.ceo/api/breed/pembroke/images/random')
+  //   // console.log(data.data.message)
+  //   return data.data.message
+  //   // dogList.map(item => {
+  //   //   item.img = data.data.message
+  //   // })
+  // }
 
-.greetings h1,
-.greetings h3 {
-  text-align: center;
-}
-
-@media (min-width: 1024px) {
-  .greetings h1,
-  .greetings h3 {
-    text-align: left;
+  function getDogImg () {
+    let data = axios.get('https://dog.ceo/api/breed/pembroke/images/random').then(res => {
+      console.log(res.data.message)
+      return res.data.message
+    })
+    // console.log(data.data.message)
+    // return data.data.message
+    // dogList.map(item => {
+    //   item.img = data.data.message
+    // })
   }
-}
-</style>
+
+  function getDogs () {
+    dogList.map(item => {
+      // console.log(getDogImg())
+      item.img = getDogImg()
+    })
+  }
+
+  onMounted(() => {
+    getDogs()
+  })
+
+</script>
