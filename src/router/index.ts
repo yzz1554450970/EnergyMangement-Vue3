@@ -25,27 +25,83 @@ const router = createRouter({
 				{
 					name: '设备监测',
 					path:'/equipmentMonitor',
-					component:Home
+					component:() => import('@/pages/equipmentMonitor/index.vue')
 				},
 				{
 					name: '能耗管理',
 					path:'/energyManagement',
-					component:News
+					// component:() => import('@/pages/energyManagement/index.vue'),
+					children: [
+						{
+							name: '计划管理',
+							path: '/energyManagement/plan',
+							iconCode: 'e6d6',
+							component: () => import('@/pages/energyManagement/plan/index.vue'),
+						},
+						{
+							name: '规则管理',
+							path: '/energyManagement/rule',
+							iconCode: 'e6d6',
+							component: () => import('@/pages/EnergyManagement/rule/index.vue'),
+						},
+						// {
+						// 	name: '月能耗记录',
+						// 	path: '/EnergyRecords',
+						// 	iconCode: 'e6d6',
+						// 	component: require('pages/EnergyManagement/EnergyRecords/Content/EnergyRecords').default,
+						// },
+						// {
+						// 	name: '能耗报警',
+						// 	path: '/EnergyAlarm',
+						// 	iconCode: 'e6d6',
+						// 	component: require('pages/EnergyManagement/EnergyAlarm/Content/EnergyAlarm').default,
+						// },
+						// {
+						// 	name: '综合统计分析',
+						// 	path: '/Statistics',
+						// 	iconCode: 'e6d6',
+						// 	component: require('pages/EnergyManagement/Statistics').default,
+						// },
+						// {
+						// 	name: '设备能耗分析',
+						// 	path: '/EquipEnergy',
+						// 	iconCode: 'e6d6',
+						// 	component: require('pages/EnergyManagement/EquipEnergy').default,
+						// },
+						// {
+						// 	name: '分析报告',
+						// 	path: '/AnalysisReport',
+						// 	iconCode: 'e6d6',
+						// 	component: require('pages/EnergyManagement/AnalysisReport').default,
+						// },
+						// {
+						// 	name: '用水统计',
+						// 	path: '/StatisticsWater',
+						// 	iconCode: 'e6d6',
+						// 	component: require('pages/EnergyManagement/StatisticsWater').default,
+						// },
+						// {
+						// 	name: '用电统计',
+						// 	path: '/StatisticsElectricity',
+						// 	iconCode: 'e6d6',
+						// 	component: require('pages/EnergyManagement/StatisticsElectricity').default,
+						// }
+					]
 				},
 				{
 					name: '设备物联',
 					path:'/equipmentInternet',
-					component:About
+					component:() => import('@/pages/equipmentInternet/index.vue')
 				},
 				{
 					name: '策略管理',
 					path:'/strategyManagement',
-					component:About
+					component:() => import('@/pages/strategyManagement/index.vue')
 				},
 				{
 					name: '系统管理',
 					path:'/systemManagement',
-					component:About
+					component:() => import('@/pages/systemManagement/index.vue')
 				}
 			]
 		}

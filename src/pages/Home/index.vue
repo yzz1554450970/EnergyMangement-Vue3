@@ -3,8 +3,10 @@
     <div class="body">
         <!-- 导航区 -->
         <div class="navigate">
-            <RouterLink class="tab" v-for="item in menuList" :key="item.path" :to="item.path" active-class="active">{{ item.name }}
-            </RouterLink>
+            <div v-for="item in menuList" :key="item.path">
+                <RouterLink class="tab" :to="item.component?item.path:''" active-class="active">{{ item.name }}</RouterLink>
+                <RouterLink class="tab" v-for="ele in item.children"  :to="ele.path" active-class="active">{{ ele.name }}</RouterLink>
+            </div>
         </div>
         <!-- 展示区 -->
         <div class="main-content">
@@ -18,6 +20,8 @@ import { RouterLink, RouterView, useRouter } from 'vue-router'
 
 const route = useRouter()
 const menuList = route.options.routes[1].children
+console.log(menuList)
+
 </script>
 
 <style scoped>
