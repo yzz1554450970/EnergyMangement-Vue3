@@ -17,17 +17,24 @@
 
 <script lang="ts" setup name="App">
 import { RouterLink, RouterView, useRouter } from 'vue-router'
+import useFontSize from '@/hooks/useFontSize'
+import { useFontSizeStore } from '@/store/fontSize'
 
 const route = useRouter()
 const menuList = route.options.routes[1].children
 console.log(menuList)
+
+const fontSizeStore = useFontSizeStore()
+// console.log(fontSize)\
+const fontSize = fontSizeStore.fontSize
+console.log(fontSize)
 
 </script>
 
 <style scoped>
 .header {
     width: 100%;
-    height: 56px;
+    height: v-bind(56 * fontSize / 16 + 'px');
     background: #F4FAF9;
 }
 
@@ -50,6 +57,8 @@ console.log(menuList)
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 18px;
+    color: #79837C;
 }
 
 .active {
