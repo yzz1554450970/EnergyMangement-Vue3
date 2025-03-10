@@ -8,8 +8,8 @@
 </template>
 
 <script lang="ts" setup name="Person">
-  import {onMounted, reactive, ref} from 'vue'
-  import axios from 'axios'
+  import {onMounted, reactive} from 'vue'
+  // import axios from 'axios'
   import useSum from '@/hooks/useSum'
   
   let {sum, changeSum} = useSum()
@@ -37,10 +37,10 @@
   // }
 
   function getDogImg () {
-    let data = axios.get('https://dog.ceo/api/breed/pembroke/images/random').then(res => {
-      console.log(res.data.message)
-      return res.data.message
-    })
+    // let data = axios.get('https://dog.ceo/api/breed/pembroke/images/random').then(res => {
+    //   console.log(res.data.message)
+    //   return res.data.message
+    // })
     // console.log(data.data.message)
     // return data.data.message
     // dogList.map(item => {

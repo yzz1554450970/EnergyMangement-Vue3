@@ -1,7 +1,7 @@
 import {createRouter,createWebHistory} from 'vue-router'
-import Home from '@/pages/Home/index.vue'
-import News from '@/pages/News/index.vue'
-import About from '@/pages/About/index.vue'
+// import Home from '@/pages/Home/index.vue'
+// import News from '@/pages/News/index.vue'
+// import About from '@/pages/About/index.vue'
 import Login from '@/pages/Login/index.vue'
 
 const router = createRouter({
@@ -20,16 +20,19 @@ const router = createRouter({
 				{
 					name: '能耗监测',
 					path:'/energyMonitor',
+					iconCode: 'e68c',
 					component: () => import('@/pages/energyMonitor/index.vue')
 				},
 				{
 					name: '设备监测',
 					path:'/equipmentMonitor',
+					iconCode: 'e689',
 					component:() => import('@/pages/equipmentMonitor/index.vue')
 				},
 				{
 					name: '能耗管理',
 					path:'/energyManagement',
+					iconCode: 'e685',
 					// component:() => import('@/pages/energyManagement/index.vue'),
 					children: [
 						{
@@ -91,16 +94,19 @@ const router = createRouter({
 				{
 					name: '设备物联',
 					path:'/equipmentInternet',
+					iconCode: 'e688',
 					component:() => import('@/pages/equipmentInternet/index.vue')
 				},
 				{
 					name: '策略管理',
 					path:'/strategyManagement',
+					iconCode: 'e68d',
 					component:() => import('@/pages/strategyManagement/index.vue')
 				},
 				{
 					name: '系统管理',
 					path:'/systemManagement',
+					iconCode: 'e683',
 					component:() => import('@/pages/systemManagement/index.vue')
 				}
 			]

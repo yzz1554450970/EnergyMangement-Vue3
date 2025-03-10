@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts" setup>
-import { onBeforeMount, ref } from 'vue';
+import { onBeforeMount } from 'vue';
 
 onBeforeMount(() => { //根据浏览器大小变化实时改变根元素的fontsize
   const animationFrameID = null;
