@@ -1,11 +1,10 @@
 <template>
-  <svg class="icon" :viewBox="viewBox">
+  <svg class="icon" :viewBox="viewBox" v-bind="attrs">
     <path
       v-for="(item, i) in pathList"
       :key="i"
       :d="item.d"
       :fill="color"
-      v-bind="attrs"
     />
   </svg>
 </template>
