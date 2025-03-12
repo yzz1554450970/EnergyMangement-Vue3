@@ -41,10 +41,11 @@
 </template>
 <script lang="ts" setup>
 // import router from '@/router'
-import { computed, defineOptions, reactive, ref, watchEffect } from 'vue'
+import { computed, defineOptions, onBeforeMount, reactive, ref, watchEffect } from 'vue'
 import { RouterLink, RouterView, useRouter } from 'vue-router'
 import Icon from '@/components/Icon/Icon.vue'
 import type { transform } from 'typescript';
+import http from '@/utils/request';
 
 defineOptions({
   name: 'HomeComponent'
@@ -54,6 +55,20 @@ const route = useRouter()
 const menuList = route.options.routes[1].children
 
 const reslutList = reactive([...menuList.map(item => ({...item, showchild: true}))]) //菜单默认全部展开
+
+const getInfo = () => {
+    http.get('/info').then((res) => {
+        if (res.status === 0) {
+            console.log(res)
+        } else {
+            console.log(res.statusDesc)
+        }
+    })
+}
+
+onBeforeMount(() => {
+    getInfo()
+})
 
 </script>
 

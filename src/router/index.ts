@@ -16,6 +16,7 @@ const router = createRouter({
 			name: 'layout',
 			path:'/',
 			component: () => import('@/pages/Home/index.vue'),
+			redirect: '/energyManagement',
 			children: [
 				{
 					name: '能耗监测',
@@ -33,6 +34,7 @@ const router = createRouter({
 					name: '能耗管理',
 					path:'/energyManagement',
 					iconCode: 'e685',
+					redirect: '/energyManagement/plan',
 					// component:() => import('@/pages/energyManagement/index.vue'),
 					children: [
 						{
