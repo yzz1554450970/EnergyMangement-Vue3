@@ -16,8 +16,14 @@ const router = createRouter({
 			name: 'layout',
 			path:'/',
 			component: () => import('@/pages/Home/index.vue'),
-			redirect: '/energyManagement',
+			redirect: '/gis',
 			children: [
+				{
+					name: 'GIS',
+					path:'/gis',
+					iconCode: 'e68c',
+					component: () => import('@/pages/GIS/index.vue')
+				},
 				{
 					name: '能耗监测',
 					path:'/energyMonitor',

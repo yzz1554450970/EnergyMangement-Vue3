@@ -13,6 +13,7 @@
   "dependencies": {
     "axios": "^1.8.2",
     "blueimp-md5": "^2.19.0",
+    "cesium": "^1.127.0",
     "feng_icon": "^1.1.0",
     "loadsh": "^0.0.4",
     "md5": "^2.3.0",
