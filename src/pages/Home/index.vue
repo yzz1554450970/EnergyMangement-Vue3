@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="header">Vue路由测试</div>
+        <Header></Header>
         <div class="body">
             <!-- 导航区 -->
             <div class="navigate">
@@ -44,8 +44,8 @@
 import { computed, defineOptions, onBeforeMount, reactive, ref, watchEffect } from 'vue'
 import { RouterLink, RouterView, useRouter } from 'vue-router'
 import Icon from '@/components/Icon/Icon.vue'
-import type { transform } from 'typescript';
 import http from '@/utils/request';
+import Header from './header.vue';
 
 defineOptions({
   name: 'HomeComponent'
@@ -86,7 +86,7 @@ const reslutList = reactive([...menuList.map(item => ({...item, showchild: true}
 
 .navigate {
     width: 291px;
-    height: calc(100% - 56px);
+    height: 100%;
     background: #F4FAF9;
     display: flex;
     flex-direction: column;

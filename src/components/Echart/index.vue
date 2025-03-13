@@ -5,7 +5,7 @@
 <script lang="ts" setup>
 import { useAttrs,inject, defineOptions, ref, onMounted, onUnmounted, nextTick, watch, onBeforeUnmount, watchEffect } from 'vue';
 import * as echarts from 'echarts';
-import useBox from '../Box/useBox';
+import useBox from '@/components/Box/useBox';
 
 // defineOptions({
 //   name: 'IconComponent'
