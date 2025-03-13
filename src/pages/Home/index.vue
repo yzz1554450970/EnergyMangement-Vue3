@@ -56,19 +56,19 @@ const menuList = route.options.routes[1].children
 
 const reslutList = reactive([...menuList.map(item => ({...item, showchild: true}))]) //菜单默认全部展开
 
-const getInfo = () => {
-    http.get('/info').then((res) => {
-        if (res.status === 0) {
-            console.log(res)
-        } else {
-            console.log(res.statusDesc)
-        }
-    })
-}
+// const getInfo = () => {
+//     http.get('/info').then((res) => {
+//         if (res.status === 0) {
+//             console.log(res)
+//         } else {
+//             console.log(res.statusDesc)
+//         }
+//     })
+// }
 
-onBeforeMount(() => {
-    getInfo()
-})
+// onBeforeMount(() => {
+//     getInfo()
+// })
 
 </script>
 

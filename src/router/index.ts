@@ -22,13 +22,28 @@ const router = createRouter({
 					name: 'GIS',
 					path:'/gis',
 					iconCode: 'e68c',
-					component: () => import('@/pages/GIS/index.vue')
+					redirect: '/gis/cesium',
+					children: [
+						{
+							name: 'cesium',
+							path: '/gis/cesium',
+							iconCode: 'e6d6',
+							component: () => import('@/pages/GIS/cesium/index.vue'),
+						},
+					]
 				},
 				{
-					name: '能耗监测',
-					path:'/energyMonitor',
+					name: 'Chart',
+					path:'/chart',
 					iconCode: 'e68c',
-					component: () => import('@/pages/energyMonitor/index.vue')
+					children: [
+						{
+							name: 'echart',
+							path: '/chart/echart',
+							iconCode: 'e6d6',
+							component: () => import('@/pages/Chart/echart/index.vue'),
+						},
+					]
 				},
 				{
 					name: '设备监测',

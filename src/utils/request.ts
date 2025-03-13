@@ -11,7 +11,7 @@ const service = axios.create({
 service.interceptors.request.use(
     (config) => {
         const token = localStorage.getItem("token");
-        console.log(token)
+        // console.log(token)
         if (token) { // 添加 Token ‌:ml-citation{ref="2,6" data="citationList"}
             // config.headers.Authorization = `Bearer ${token}`;
             config.headers.Authorization = `${token}`;
