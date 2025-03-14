@@ -11,6 +11,7 @@
     "type-check": "vue-tsc --build"
   },
   "dependencies": {
+    "@emotion/css": "^11.13.5",
     "axios": "^1.8.2",
     "blueimp-md5": "^2.19.0",
     "cesium": "^1.127.0",
@@ -27,6 +28,8 @@
   "devDependencies": {
     "@eslint/js": "^9.21.0",
     "@tsconfig/node22": "^22.0.0",
+    "@types/blueimp-md5": "^2.18.2",
+    "@types/lodash": "^4.17.16",
     "@types/node": "^22.13.4",
     "@vitejs/plugin-vue": "^5.2.1",
     "@vue/tsconfig": "^0.7.0",

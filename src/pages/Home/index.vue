@@ -4,7 +4,7 @@
         <div class="body">
             <!-- 导航区 -->
             <div class="navigate">
-                <div v-for="item in reslutList" :key="item.path" style="width: 100%">
+                <div v-for="item in menuList" :key="item.path" style="width: 100%">
                     <div class="parentTab" @click="item.showchild = !item.showchild">
                         <div class="parentTab_tilte">
                             <Icon 
@@ -41,9 +41,10 @@
 </template>
 <script lang="ts" setup>
 // import router from '@/router'
-import { computed, defineOptions, onBeforeMount, reactive, ref, watchEffect } from 'vue'
-import { RouterLink, RouterView, useRouter } from 'vue-router'
+import { computed, defineOptions, onBeforeMount, reactive,toRef, ref, watchEffect } from 'vue'
+import { RouterLink, RouterView, useRouter, type RouteRecordRaw } from 'vue-router'
 import Icon from '@/components/Icon/Icon.vue'
+import {first} from 'lodash'
 import http from '@/utils/request';
 import Header from './header.vue';
 
@@ -51,10 +52,25 @@ defineOptions({
   name: 'HomeComponent'
 });
 
-const route = useRouter()
-const menuList = route.options.routes[1].children
+const router = useRouter()
 
-const reslutList = reactive([...menuList.map(item => ({...item, showchild: true}))]) //菜单默认全部展开
+interface MenuListItem {
+  name: string,
+  path: string,
+  iconCode: string,
+  children?: {
+    name: string,
+    path: string,
+  }[]
+}
+
+console.log(router.getRoutes())
+const menuList = computed(() => {
+    return first(router.options.routes.filter(ele => ele.name === 'layout'))?.children?.map(item => ({
+        ...item,
+        showchild: true
+    })) as MenuListItem[]
+}) 
 
 // const getInfo = () => {
 //     http.get('/info').then((res) => {

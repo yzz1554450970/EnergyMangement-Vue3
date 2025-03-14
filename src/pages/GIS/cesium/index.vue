@@ -22,7 +22,15 @@ onMounted(() => {
     })
     const viewer = new Cesium.Viewer('cesiumContainer' , {
         // imageryProvider: esri, //自定义图层
+        // imageryProvider: new Cesium.WebMapTileServiceImageryProvider({
+        //     url: '',
+        //     layer: 
+        // })
         // terrainProvider: Cesium.createWorldTerrain(), //地形图层
+        terrainProvider: Cesium.createWorldTerrain({
+            requestVertexNormals: true,
+            requestWaterMask: true
+        }),
         // requestWaterMask: true, //水面特效 没必要的话无需设置
         // 隐藏控件
         timeline:false, // 控制下方时间轴控件
@@ -37,6 +45,10 @@ onMounted(() => {
         selectionIndicator: false, // 隐藏选中状态
         shouldAnimate: true, // 允许动画同步
         fullscreenButton:false, // 右下角全屏按钮
+        // skyBox: new Cesium.SkyBox({
+        //     sources {
+        //     }
+        // })
     })
     viewer._cesiumWidget._creditContainer.style.display="none";//取消版权信息
 })

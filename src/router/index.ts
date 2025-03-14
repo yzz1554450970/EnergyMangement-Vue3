@@ -21,13 +21,12 @@ const router = createRouter({
 				{
 					name: 'GIS',
 					path:'/gis',
-					iconCode: 'e68c',
+					meta: {iconCode: 'e68c'},
 					redirect: '/gis/cesium',
 					children: [
 						{
 							name: 'cesium',
 							path: '/gis/cesium',
-							iconCode: 'e6d6',
 							component: () => import('@/pages/GIS/cesium/index.vue'),
 						},
 					]
@@ -35,39 +34,47 @@ const router = createRouter({
 				{
 					name: 'Chart',
 					path:'/chart',
-					iconCode: 'e68c',
+					meta: {iconCode: 'e68c'},
 					children: [
 						{
 							name: 'echart',
 							path: '/chart/echart',
-							iconCode: 'e6d6',
 							component: () => import('@/pages/Chart/echart/index.vue'),
 						},
 					]
 				},
 				{
-					name: '设备监测',
-					path:'/equipmentMonitor',
-					iconCode: 'e689',
-					component:() => import('@/pages/equipmentMonitor/index.vue')
+					name: 'Display',
+					path:'/display',
+					meta: {iconCode: 'e689'},
+					children: [
+						{
+							name: 'button',
+							path: '/display/button',
+							component: () => import('@/pages/Display/button/index.vue'),
+						},
+						{
+							name: 'radio',
+							path: '/display/radio',
+							component: () => import('@/pages/Display/radio/index.vue'),
+						},
+					]
 				},
 				{
 					name: '能耗管理',
 					path:'/energyManagement',
-					iconCode: 'e685',
+					meta: {iconCode: 'e685'},
 					redirect: '/energyManagement/plan',
 					// component:() => import('@/pages/energyManagement/index.vue'),
 					children: [
 						{
 							name: '计划管理',
 							path: '/energyManagement/plan',
-							iconCode: 'e6d6',
 							component: () => import('@/pages/energyManagement/plan/index.vue'),
 						},
 						{
 							name: '规则管理',
 							path: '/energyManagement/rule',
-							iconCode: 'e6d6',
 							component: () => import('@/pages/EnergyManagement/rule/index.vue'),
 						},
 						// {
@@ -117,19 +124,19 @@ const router = createRouter({
 				{
 					name: '设备物联',
 					path:'/equipmentInternet',
-					iconCode: 'e688',
+					meta: {iconCode: 'e688'},
 					component:() => import('@/pages/equipmentInternet/index.vue')
 				},
 				{
 					name: '策略管理',
 					path:'/strategyManagement',
-					iconCode: 'e68d',
+					meta: {iconCode: 'e68d'},
 					component:() => import('@/pages/strategyManagement/index.vue')
 				},
 				{
 					name: '系统管理',
 					path:'/systemManagement',
-					iconCode: 'e683',
+					meta: {iconCode: 'e683'},
 					component:() => import('@/pages/systemManagement/index.vue')
 				}
 			]
